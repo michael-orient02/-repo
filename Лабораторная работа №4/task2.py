@@ -1,19 +1,15 @@
-import csv
 import json
+import csv
 
 INPUT_FILENAME = "input.csv"
 OUTPUT_FILENAME = "output.json"
 
 
 def task() -> None:
-    rows = []
-    with open(INPUT_FILENAME, mode='r', newline='', encoding='utf-8') as csv_file:
-        reader = csv.DictReader(csv_file)
-        for row in reader:
-            rows.append(row)
-
-    with open(OUTPUT_FILENAME, mode='w', encoding='utf-8') as json_file:
-        json.dump(rows, json_file, indent=4, ensure_ascii=False)
+    with open(INPUT_FILENAME) as file:
+        data = [i for i in csv.DictReader(file)]
+    with open(OUTPUT_FILENAME, 'w') as file_2:
+        json.dump(data, file_2, indent=4)
 
 
 if __name__ == '__main__':
