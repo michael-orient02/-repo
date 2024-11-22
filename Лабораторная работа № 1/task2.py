@@ -5,6 +5,6 @@ page = 100
 line = 50
 symbol_in_line = 25
 volume_in_book = volume_in_symbol * symbol_in_line * line * page
-total_book = round(volume // volume_in_book)
+total_book = volume // volume_in_book
 
-print("Количество книг, помещающихся на дискету:", total_book)
+print("Количество книг, помещающихся на дискету:", round(total_book))
