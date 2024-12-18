@@ -2,20 +2,28 @@ import doctest
 
 
 class Child:
+    """
+    Класс описывает параметры ребенка.
+
+    """
     def __init__(self, height: float, weight: float, age: int):
+        if age < 0:
+            raise ValueError
+        if not isinstance(age, int):
+            raise TypeError
+        self.age = age
+
         if height < 0:
             raise ValueError
+        if not isinstance(height, float):
+            raise TypeError
         self.height = height
 
         if weight < 0:
             raise ValueError
-        self.weight = weight
-
-        if age < 0:
-            raise ValueError
-        if isinstance(age, int):
+        if not isinstance(weight, float):
             raise TypeError
-        self.age = age
+        self.weight = weight
 
         """
         :param: height: Рост ребёнка
@@ -36,29 +44,44 @@ class Child:
 
         Пример:
         >>> test_5 = Child(116, 24, 6)
-        >>> test_5.growth(3) 
+        >>> test_5.growth(7) 
         """
         ...
 
-    def sleep(self):
+    def describe(self):
+
+        print(f"Dзраст {self.age} лет, рост {self.height} см, вес {self.weight} кг.")
         """
-        Метод, который описывает процесс cна ребенка
+        Метод для вывода информации о ребенке.
+        
+        Пример:
+        >>> test_9 = Child(116, 24, 6)
+        >>> test_9.describe()
         """
         ...
 
 
 class Tire:
+    """
+    Класс описывает параметры шины автомобиля.
+    """
     def __init__(self, widht: int, height: int, pressure: float):
         if widht <= 0:
             raise ValueError
+        if not isinstance(widht, int):
+            raise TypeError
         self.widht = widht
 
         if height <= 0:
             raise ValueError
+        if not isinstance(height, int):
+            raise TypeError
         self.height = height
 
         if pressure <= 0:
             raise ValueError
+        if not isinstance(pressure, float):
+            raise TypeError
         self.pressure = pressure
         """
         :param: widht: Ширина шины
@@ -99,14 +122,21 @@ class Tire:
 
 
 class Text:
+    """
+    Класс описывает текста.
+    """
     def __init__(self, font: str, size: int, number: int):
         self.font = font
 
         if size <= 0:
             raise ValueError
+        if not isinstance(size, int):
+            raise TypeError
         self.size = size
 
         self.number = number
+        if not isinstance(number, int):
+            raise TypeError
         """
         :param: text_font: Щрифт текста
         :param: text_size: Размер текста
